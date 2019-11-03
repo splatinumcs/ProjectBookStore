@@ -1,0 +1,35 @@
+CREATE TABLE books
+(
+    ID                          INT NOT NULL,
+    name                        VARCHAR(200) NOT NULL,
+    author                      VARCHAR(200),
+    price                       FLOAT(10,2),
+    is_recommended              VARCHAR(1),
+    active                      VARCHAR(1),
+    CONSTRAINT PRIMARY KEY (name)
+);
+
+CREATE TABLE users
+(
+    ID                          INT NOT NULL,
+    username                    VARCHAR(50) NOT NULL,
+    password                    VARCHAR(100) NOT NULL,
+    full_name                   VARCHAR(100) NOT NULL,
+    surname                     VARCHAR(100) NOT NULL,
+    role                        VARCHAR(50) NOT NULL,
+    active                      VARCHAR(1),
+    date_of_birth               VARCHAR(10),
+    CONSTRAINT PRIMARY KEY (username)
+);
+
+CREATE TABLE orders
+(
+    ID                          INT NOT NULL,
+    book_id                     INT NOT NULL,
+    user_id                     INT NOT NULL,
+    active                      VARCHAR(1),
+    remakrs                     VARCHAR(100),
+    status                      VARCHAR(255),
+    CONSTRAINT PRIMARY KEY (ID),
+    CONSTRAINT const_orders UNIQUE (book_id, user_id, active)
+);
